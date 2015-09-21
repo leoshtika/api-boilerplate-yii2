@@ -53,10 +53,13 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [['role', 'status'], 'integer'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
             ['role', 'default', 'value' => self::ROLE_USER],
             ['role', 'in', 'range' => [self::ROLE_USER, self::ROLE_ADMIN]],
+            [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
+            [['first_name', 'last_name'], 'string', 'max' => 128],
         ];
     }
 
