@@ -1,62 +1,49 @@
-Yii 2 Advanced Project Template
-===============================
+Crowd List web app + REST API
+=============================
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
+This is a Yii2 advanced application with backend, frontend and RESTful API
 
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
 
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
+Requirements
+------------
+- PHP 5.4 or higher
 
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
 
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-advanced/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-advanced/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
+Workflow for crowd-list contributors
+------------------------------------
 
-DIRECTORY STRUCTURE
--------------------
+### Prepare your development environment
 
+#### 1. Fork the crowd-list repository on GitHub and clone your fork to your development environment
 ```
-common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
-backend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains backend configurations
-    controllers/         contains Web controller classes
-    models/              contains backend-specific model classes
-    runtime/             contains files generated during runtime
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-frontend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains frontend configurations
-    controllers/         contains Web controller classes
-    models/              contains frontend-specific model classes
-    runtime/             contains files generated during runtime
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
-tests                    contains various tests for the advanced application
-    codeception/         contains tests developed with Codeception PHP Testing Framework
+git clone https://github.com/YOUR-GITHUB-USERNAME/crowd-list.git
 ```
 
+#### 2. Add the main crowd-list repository as an additional git remote called "upstream"
+```
+git remote add upstream https://github.com/leoshtika/crowd-list.git
+```
 
-Database
---------
-<pre>
+#### 3. Install dependencies (assuming you have composer installed globally)
+```
+composer install
+```
+Note: If you see errors like Problem 1 The requested package bower-asset/jquery could not be found in any version, 
+there may be a typo in the package name., you will need to run: 
+```
+composer global require "fxp/composer-asset-plugin:~1.0.3"
+```
+
+#### 4. Initialize the application
+Execute
+```
+php init
+```
+select development as environment
+
+
+#### 5. Create a new database
+```
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
@@ -75,4 +62,4 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
-</pre>
+```
