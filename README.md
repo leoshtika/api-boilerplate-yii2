@@ -109,13 +109,21 @@ git add --all
 git commit -m "Resolve #999: A brief description of this change"
 ```
 
-#### 6. Pull the latest Yii code from upstream into your branch
+
+#### 6. Pull the latest code from upstream, rebase & squash your changes
+Before pushing your code to GitHub make sure to integrate upstream changes into your local repository
 ```
+git checkout master
 git pull upstream master
+git checkout 999-name-of-your-branch
+git rebase master
 ```
-This ensures you have the latest code in your branch before you open your pull request. If there are any merge 
-conflicts, you should fix them now and commit the changes again. This ensures that your changes can be merged 
-with one click.
+This ensures that your changes can be merged with one click. 
+**Squash your changes** 
+This step is not always necessary, but is required when your commit history is full of small, unimportant commits.
+```
+git rebase -i master
+```
 
 #### 7. Push your code to GitHub
 ```
