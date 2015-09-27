@@ -119,7 +119,8 @@ git checkout 999-name-of-your-branch
 git rebase master
 ```
 This ensures that your changes can be merged with one click. 
-**Squash your changes** 
+
+**Squash commits** 
 This step is not always necessary, but is required when your commit history is full of small, unimportant commits.
 ```
 git rebase -i master
