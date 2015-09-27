@@ -7,6 +7,15 @@ This is a Yii2 advanced application with backend, frontend and RESTful API
 Requirements
 ------------
 - PHP 5.4 or higher
+- MySQL 5 or higher
+
+
+How to use
+----------
+
+...
+
+
 
 
 Workflow for crowd-list contributors
@@ -53,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(255) NOT NULL,
   `first_name` varchar(128) NOT NULL,
   `last_name` varchar(128) NOT NULL,
-  `role` int(6) NOT NULL DEFAULT '10',
+  `role` smallint(6) NOT NULL DEFAULT '10',
   `status` smallint(6) NOT NULL DEFAULT '10',
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
@@ -61,10 +70,72 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 ```
 
 
 
 Working on bugs and features
 ----------------------------
+Having prepared your develop environment as explained above you can now start working on the feature or bugfix.
+
+#### 1. Make sure there is an issue created for the thing you are working on if it requires significant effort to fix
+All new features and bug fixes should have an associated issue to provide a single point of reference for discussion 
+and documentation.
+If you do not find an existing issue matching what you intend to work on, please open a new issue or create 
+a pull request directly if it is straightforward fix.
+
+#### 2. Fetch the latest code from the main crowd-list branch
+You should start at this point for every new contribution to make sure you are working on the latest code.
+```
+git fetch upstream
+```
+
+#### 3. Create a new branch for your feature based on the current crowd-list master branch
+Each separate bug fix or change should go in its own branch. Branch names should be descriptive and start with the 
+number of the issue that your code relates to. If you aren't fixing any particular issue, just skip number. For example:
+```
+git checkout upstream/master
+git checkout -b 999-name-of-your-branch
+```
+
+#### 4. Do your magic, write your code
+Make sure it works :)
+
+#### 5. Commit your changes
+```
+git add --all
+git commit -m "Resolve #999: A brief description of this change"
+```
+
+#### 6. Pull the latest Yii code from upstream into your branch
+```
+git pull upstream master
+```
+This ensures you have the latest code in your branch before you open your pull request. If there are any merge 
+conflicts, you should fix them now and commit the changes again. This ensures that your changes can be merged 
+with one click.
+
+#### 7. Push your code to GitHub
+```
+git push -u origin 999-name-of-your-branch
+```
+
+#### 8. Open a [pull request](http://help.github.com/send-pull-requests/) against upstream
+Go to your repository on GitHub and click "Pull Request", choose your branch on the right and enter some more 
+details in the comment box. To link the pull request to the issue put anywhere in the pull comment #999 
+where 999 is the issue number.
+Note that each pull-request should fix a single change.
+
+#### 9. Someone will review your code
+Someone will review your code, and you might be asked to make some changes, if so go to step #5 
+(you don't need to open another pull request if your current one is still open). 
+If your code is accepted it will be merged into the main branch and become part of the next release.
+
+#### 10. Cleaning it up
+After your code was either accepted or declined you can delete branches you've worked with from your local repository and origin.
+```
+git checkout master
+git branch -D 999-name-of-your-branch
+git push origin --delete 999-name-of-your-branch
+```
