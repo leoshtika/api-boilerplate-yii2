@@ -100,7 +100,8 @@ git checkout -b 999-name-of-your-branch
 ```
 
 #### 4. Do your magic, write your code
-Make sure it works :)
+All new code should follow [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) 
+coding standard. Make sure it works :)
 
 #### 5. Commit your changes
 ```
