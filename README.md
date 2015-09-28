@@ -1,6 +1,6 @@
 Crowd Notes
 ===========
-This is a notes manager application created with Yii2, providing backend, frontend and RESTful API
+This is a notes manager application created with Yii2, providing backend, frontend and RESTful API. 
 It can be used for cheat sheets, password keeper, grocery list and much more! 
 
 Requirements
