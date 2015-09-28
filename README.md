@@ -1,7 +1,7 @@
-Crowd List web app + REST API
-=============================
-This is an application created with Yii2 framework, providing backend, frontend and RESTful API
-
+Crowd Notes
+===========
+This is a notes manager application created with Yii2, providing backend, frontend and RESTful API
+It can be used for cheat sheets, password keeper, grocery list and much more! 
 
 Requirements
 ------------
@@ -17,19 +17,19 @@ How to use
 
 
 
-Workflow for crowd-list contributors
+Workflow for crowd-notes contributors
 ------------------------------------
 
 ### Prepare your development environment
 
-#### 1. Fork the crowd-list repository on GitHub and clone your fork to your development environment
+#### 1. Fork the crowd-notes repository on GitHub and clone your fork to your development environment
 ```
-git clone https://github.com/YOUR-GITHUB-USERNAME/crowd-list.git
+git clone https://github.com/YOUR-GITHUB-USERNAME/crowd-notes.git
 ```
 
-#### 2. Add the main crowd-list repository as an additional git remote called "upstream"
+#### 2. Add the main crowd-notes repository as an additional git remote called "upstream"
 ```
-git remote add upstream https://github.com/leoshtika/crowd-list.git
+git remote add upstream https://github.com/leoshtika/crowd-notes.git
 ```
 
 #### 3. Install dependencies (assuming you have composer installed globally)
@@ -52,16 +52,44 @@ You will be asked to chose environment. Chose Development (type "0" and press en
 
 #### 5. Create a new database
 Create a new database (MySQL, SQLite, PostgreSQL or other) and run the following SQL query
+
+@TODO: Create a migration
+
 ```
+CREATE TABLE IF NOT EXISTS `item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `note_id` int(11) NOT NULL,
+  `text` text NOT NULL,
+  `status` smallint(6) NOT NULL DEFAULT '10',
+  PRIMARY KEY (`id`),
+  KEY `note_id` (`note_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `note` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `color` varchar(6) NOT NULL DEFAULT 'FFFFFF',
+  `status` smallint(6) NOT NULL DEFAULT '10',
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) NOT NULL,
-  `auth_key` varchar(32) NOT NULL,
-  `password_hash` varchar(255) NOT NULL,
-  `password_reset_token` varchar(255) DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
-  `first_name` varchar(128) NOT NULL,
-  `last_name` varchar(128) NOT NULL,
+  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `first_name` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `last_name` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `role` smallint(6) NOT NULL DEFAULT '10',
   `status` smallint(6) NOT NULL DEFAULT '10',
   `created_at` int(11) NOT NULL,
@@ -70,7 +98,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+
+ALTER TABLE `item`
+  ADD CONSTRAINT `item_ibfk_1` FOREIGN KEY (`note_id`) REFERENCES `note` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `note`
+  ADD CONSTRAINT `note_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 ```
 Configure the database connection via the dsn component property in common/config/main-local.php file
  
@@ -86,14 +121,14 @@ and documentation.
 If you do not find an existing issue matching what you intend to work on, please open a new issue or create 
 a pull request directly if it is straightforward fix.
 
-#### 2. Fetch the latest code from the main crowd-list branch
+#### 2. Fetch the latest code from the main crowd-notes branch
 You should start at this point for every new contribution to make sure you are working on the latest code.
 ```
 git checkout master
 git pull upstream master
 ```
 
-#### 3. Create a new branch for your feature based on the current crowd-list master branch
+#### 3. Create a new branch for your feature based on the current crowd-notes master branch
 Each separate bug fix or change should go in its own branch. Branch names should be descriptive and start with the 
 number of the issue that your code relates to. If you aren't fixing any particular issue, just skip number. For example:
 ```
