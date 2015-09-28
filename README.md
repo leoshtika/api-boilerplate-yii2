@@ -1,13 +1,12 @@
 Crowd List web app + REST API
 =============================
-
-This is a Yii2 advanced application with backend, frontend and RESTful API
+This is an application created with Yii2 framework, providing backend, frontend and RESTful API
 
 
 Requirements
 ------------
 - PHP 5.4 or higher
-- MySQL 5 or higher
+- Database (MySQL, SQLite, PostgreSQL or other)
 
 
 How to use
@@ -38,20 +37,21 @@ git remote add upstream https://github.com/leoshtika/crowd-list.git
 composer install
 ```
 Note: If you see errors like Problem 1 The requested package bower-asset/jquery could not be found in any version, 
-there may be a typo in the package name., you will need to run: 
+there may be a typo in the package name, you will need to run: 
 ```
 composer global require "fxp/composer-asset-plugin:~1.0.3"
 ```
 
 #### 4. Initialize the application
-Execute
+Run the php init file with this command:
 ```
 php init
 ```
-select development as environment
+You will be asked to chose environment. Chose Development (type "0" and press enter)
 
 
 #### 5. Create a new database
+Create a new database (MySQL, SQLite, PostgreSQL or other) and run the following SQL query
 ```
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -72,7 +72,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 ```
-
+Configure the database connection via the dsn component property in common/config/main-local.php file
+ 
 
 
 Working on bugs and features
@@ -88,14 +89,14 @@ a pull request directly if it is straightforward fix.
 #### 2. Fetch the latest code from the main crowd-list branch
 You should start at this point for every new contribution to make sure you are working on the latest code.
 ```
-git fetch upstream
+git checkout master
+git pull upstream master
 ```
 
 #### 3. Create a new branch for your feature based on the current crowd-list master branch
 Each separate bug fix or change should go in its own branch. Branch names should be descriptive and start with the 
 number of the issue that your code relates to. If you aren't fixing any particular issue, just skip number. For example:
 ```
-git checkout upstream/master
 git checkout -b 999-name-of-your-branch
 ```
 
