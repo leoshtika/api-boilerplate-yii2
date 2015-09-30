@@ -29,6 +29,13 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'urlManagerFrontend' => [
+            'class' => 'yii\web\urlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            // @TODO: Move this to main-local.php
+            'baseUrl' => '/github/crowd-notes/frontend/web',
+        ],
     ],
     'params' => $params,
 ];
