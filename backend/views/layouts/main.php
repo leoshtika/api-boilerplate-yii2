@@ -29,22 +29,25 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Crowd Notes',
+        'brandLabel' => 'Crowd Notes (backend)',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-    ];
-    $menuItems[] = [
-        'label' => 'Frontend', 
-        'url' => Yii::$app->urlManagerFrontend->createUrl(['site/index']), 
-    ];
+    
+    $menuItems = [];
+    
     if (Yii::$app->user->isGuest) {
+        $menuItems[] = [
+            'label' => 'Frontend', 
+            'url' => Yii::$app->urlManagerFrontend->createUrl(['site/index']), 
+        ];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
+        $menuItems = [
+            ['label' => 'Dashboard', 'url' => ['/site/index']],
+        ];
         $menuItems[] = ['label' => 'Notes', 'url' => ['/note/index']];
         $menuItems[] = [
             'label' => 'Logout (' . Yii::$app->user->identity->username . ')',

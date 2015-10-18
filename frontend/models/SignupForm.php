@@ -10,6 +10,8 @@ use Yii;
  */
 class SignupForm extends Model
 {
+    public $first_name;
+    public $last_name;
     public $username;
     public $email;
     public $password;
@@ -20,6 +22,10 @@ class SignupForm extends Model
     public function rules()
     {
         return [
+            ['first_name','required'],
+            ['first_name','string','min'=>2, 'max'=>128],
+            ['last_name','required'],
+            ['last_name','string','min'=>2, 'max'=>128],
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
