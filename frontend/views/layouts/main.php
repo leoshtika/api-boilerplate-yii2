@@ -21,6 +21,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin,greek' rel='stylesheet' type='text/css'>
     <?php $this->head() ?>
 </head>
 <body>
@@ -54,7 +55,7 @@ AppAsset::register($this);
             $menuItems[] = [
                 'label' => Yii::t('app', 'Backend'), 
                 'url' => Yii::$app->urlManagerBackend->createUrl(['site/index']),
-                'linkOptions' => ['style' => 'background-color:#337AB7; color:#FFFFFF;'],
+                'linkOptions' => ['style' => 'background-color:#394754; color:#FFFFFF;'],
             ];
         }
     }
@@ -76,7 +77,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Crowd Notes <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

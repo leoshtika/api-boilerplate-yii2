@@ -1,6 +1,9 @@
 html,
 body {
     height: 100%;
+    background-color: #F2F3F4;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size:15px;
 }
 
 .wrap {
@@ -16,7 +19,7 @@ body {
 
 .footer {
     height: 60px;
-    background-color: #f5f5f5;
+    background-color: #FFFFFF;
     border-top: 1px solid #ddd;
     padding-top: 20px;
 }
@@ -89,3 +92,66 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+
+/* -- Custom inverse navbar -------------------- */
+.navbar-inverse {
+    background-color: #495B6C;
+    border-color: #394754;
+}
+.navbar-inverse .navbar-brand {
+    color: #eef7ff;
+}
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    color: #ffffff;
+}
+.navbar-inverse .navbar-text {
+    color: #eef7ff;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #eef7ff;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav > li > .dropdown-menu {
+    background-color: #495B6C;
+}
+.navbar-inverse .navbar-nav > li > .dropdown-menu > li > a {
+    color: #eef7ff;
+}
+.navbar-inverse .navbar-nav > li > .dropdown-menu > li > a:hover,
+.navbar-inverse .navbar-nav > li > .dropdown-menu > li > a:focus {
+    color: #ffffff;
+    background-color: #394754;
+}
+.navbar-inverse .navbar-nav > li > .dropdown-menu > li > .divider {
+    background-color: #495B6C;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color: #394754;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #ffffff;
+    background-color: #394754;
+}
+.navbar-inverse .navbar-toggle {
+    border-color: #394754;
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #394754;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #eef7ff;
+}
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+    border-color: #394754;
+}
+.navbar-inverse .navbar-link {
+    color: #eef7ff;
+}
+.navbar-inverse .navbar-link:hover {
+    color: #ffffff;
+}
+/* -------------------- Custom inverse navbar -- */
