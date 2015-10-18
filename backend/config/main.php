@@ -33,8 +33,8 @@ return [
             'class' => 'yii\web\urlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            // @TODO: Move this to main-local.php
-            'baseUrl' => '/github/crowd-notes/frontend/web',
+            // Overwrite the 'baseUrl' property in the 'main-local.php' file. Example:
+            // 'baseUrl' => '/your-local-path/frontend/web',
         ],
     ],
     'params' => $params,

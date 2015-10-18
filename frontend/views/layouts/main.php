@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use common\models\User;
 
 AppAsset::register($this);
 ?>
@@ -48,6 +49,14 @@ AppAsset::register($this);
             'url' => ['/site/logout'],
             'linkOptions' => ['data-method' => 'post']
         ];
+        
+        if (User::isAdmin(Yii::$app->user->identity->username)) {
+            $menuItems[] = [
+                'label' => Yii::t('app', 'Backend'), 
+                'url' => Yii::$app->urlManagerBackend->createUrl(['site/index']),
+                'linkOptions' => ['style' => 'background-color:#337AB7; color:#FFFFFF;'],
+            ];
+        }
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

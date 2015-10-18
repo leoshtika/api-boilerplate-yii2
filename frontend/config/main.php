@@ -28,6 +28,13 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'urlManagerBackend' => [
+            'class' => 'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            // Overwrite the 'baseUrl' property in the 'main-local.php' file. Example:
+            // 'baseUrl' => '/your-local-path/backend/web',
+        ],
     ],
     'params' => $params,
 ];
