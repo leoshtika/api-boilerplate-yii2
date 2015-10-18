@@ -3,7 +3,6 @@
     "description": "A notes manager application created with Yii2, providing backend, frontend, console and RESTful API",
     "keywords": ["crowd-notes", "notes", "To-do list", "RESTful API", "yii2"],
     "license": "BSD-3-Clause",
-    "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.6",
