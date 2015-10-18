@@ -1,17 +1,8 @@
 {
-    "name": "yiisoft/yii2-app-advanced",
-    "description": "Yii 2 Advanced Project Template",
-    "keywords": ["yii2", "framework", "advanced", "project template"],
-    "homepage": "http://www.yiiframework.com/",
-    "type": "project",
+    "name": "leoshtika/crowd-notes",
+    "description": "A notes manager application created with Yii2, providing backend, frontend, console and RESTful API",
+    "keywords": ["crowd-notes", "notes", "To-do list", "RESTful API", "yii2"],
     "license": "BSD-3-Clause",
-    "support": {
-        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
-        "forum": "http://www.yiiframework.com/forum/",
-        "wiki": "http://www.yiiframework.com/wiki/",
-        "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2"
-    },
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
@@ -33,5 +24,12 @@
             "npm-asset-library": "vendor/npm",
             "bower-asset-library": "vendor/bower"
         }
-    }
+    },
+    "authors": [
+        {
+            "name": "Leonard Shtika",
+            "email": "leonard@shtika.info",
+            "homepage": "http://leonard.shtika.info"
+        }
+    ]
 }
